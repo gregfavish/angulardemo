@@ -17,9 +17,9 @@ namespace AbsaProj.Controllers
         private AbsaEntities db = new AbsaEntities();
 
         // GET: api/People
-        public IQueryable<PersonModel> GetPersons()
+        public IEnumerable<PersonModel> GetPersons()
         {
-            return db.Persons.Select(x=>PersonModelMap(x));
+            return db.Persons.ToList().Select(x=>PersonModelMap(x));
         }
 
         // GET: api/People/5
