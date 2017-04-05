@@ -98,7 +98,8 @@ namespace AbsaProj.Controllers
                 Name = x.Name,
                 Surname = x.Surname,
                 CountryId = x.Country.CountryId,
-                CountryText = x.Country.Value
+                CountryText = x.Country.Value,
+                PersonId = x.PersonId
             };
         }
 
@@ -130,5 +131,6 @@ namespace AbsaProj.Controllers
         public int CountryId { get; set; }
         public string Surname { get; set; }
         public string CountryText { get; set; }
+        public int PersonId { get; set; }
     }
 }

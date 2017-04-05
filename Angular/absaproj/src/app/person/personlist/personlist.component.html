@@ -1,5 +1,5 @@
 <h3>People and thier countries</h3>
-<table >
+<table class="table-bordered" >
   <tr>
     <th>Name</th>
     <th>Surname</th>
@@ -10,5 +10,7 @@
        <td>{{person.name}}</td>
        <td>{{person.surname}}</td>
        <td>{{person.countryText}}</td>
+        <td  (click)="onSelect(person)">Edit </td>
+
          </tr>
 </table>
