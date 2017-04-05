@@ -32,7 +32,7 @@ namespace AbsaProj.Controllers
                 return NotFound();
             }
 
-            return Ok(person);
+            return Ok(PersonModelMap(person));
         }
 
         // PUT: api/People/5

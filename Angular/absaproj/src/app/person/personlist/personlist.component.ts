@@ -23,7 +23,7 @@ export class PersonlistComponent implements OnInit {
 
 
    onSelect(person : any) : any {
-     this.router.navigate(['/personEdit', person.personId]);
+     this.router.navigate(['/people', person.personId]);
 
   }
 

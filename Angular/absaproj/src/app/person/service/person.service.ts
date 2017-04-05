@@ -18,6 +18,11 @@ export class PersonService {
     .map((res:Response) => res.json());
   }
 
+    getPerson(id :number ) : any {
+    return this.http.get(this.apiaddress+id)
+    .map((res:Response) => res.json());
+  }
+
 
 
 }

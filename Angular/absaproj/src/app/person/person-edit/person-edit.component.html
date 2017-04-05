@@ -1,0 +1,15 @@
+<form *ngIf="person">
+  <div class="form-group">
+    <label>Name:</label>
+    <input class="form-control"    [(ngModel)]="person.name" name="person-name">
+  </div>
+  <div class="form-group">
+    <label>Surname:</label>
+    <input class="form-control"[(ngModel)]="person.surname" name="person-surname">
+  </div>
+ <div class="form-group">
+    <label for="pwd">Country:</label>
+    <input class="form-control" [(ngModel)]="person.countryText" name="person-countryText">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>

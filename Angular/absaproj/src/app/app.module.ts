@@ -7,16 +7,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PersonlistComponent } from './person/personlist/personlist.component';
 import { AlertModule } from 'ng2-bootstrap';
+import { PersonEditComponent } from './person/person-edit/person-edit.component';
 
 const appRoutes: Routes = [
   { path: 'people', component: PersonlistComponent },
-   { path: 'people:id', component: PersonEditComponent },
+   { path: 'people/:id', component: PersonEditComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    PersonlistComponent
+    PersonlistComponent,
+    PersonEditComponent
   ],
   imports: [
     BrowserModule,
