@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PersonService} from '../service/person.service'
+import {CountryService} from '../service/country.service'
+
 import { ActivatedRoute,Router } from "@angular/router";
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
@@ -8,21 +10,21 @@ import { Observable } from 'rxjs/Observable';
   selector: 'app-person-edit',
   templateUrl: './person-edit.component.html',
   styleUrls: ['./person-edit.component.css']
-  ,      providers: [PersonService]
+  ,      providers: [PersonService,CountryService]
 
 })
 export class PersonEditComponent implements OnInit {
 
    person: any;
-  constructor(private personService :PersonService,  private activatedRoute: ActivatedRoute,
+   countries : any;
+  constructor(private personService :PersonService,  private activatedRoute: ActivatedRoute, private countryService: CountryService
 ) { }
 
   ngOnInit() {
-    //  this.route.params
-    // // (+) converts string 'id' to a number
-    // .switchMap((params: any) => this.personService.getPerson(+params['id']))
-    // .subscribe(res=>this.person=res);
-
+ this.countryService.getCountries().subscribe(
+        res=>this.countries=res
+        );
+        
     this.activatedRoute.params.subscribe(params => {
             let id = params['id'];
 
@@ -31,5 +33,7 @@ export class PersonEditComponent implements OnInit {
                     this.person = p;
                 })
         });
+
+        
   }
 }
