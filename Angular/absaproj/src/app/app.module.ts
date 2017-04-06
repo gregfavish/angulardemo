@@ -9,6 +9,7 @@ import { PersonlistComponent } from './person/personlist/personlist.component';
 import { AlertModule } from 'ng2-bootstrap';
 import { PersonEditComponent } from './person/person-edit/person-edit.component';
 import { PersonCreateComponent } from './person/person-create/person-create.component';
+import { ButtonComponent } from './shared/button/button.component';
 
 const appRoutes: Routes = [
   { path: 'people', component: PersonlistComponent },
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
     AppComponent,
     PersonlistComponent,
     PersonEditComponent,
-    PersonCreateComponent
+    PersonCreateComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,

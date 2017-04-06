@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PersonService} from '../service/person.service'
 import { ActivatedRoute,Router } from "@angular/router";
-
+import {ButtonComponent} from "../../shared/button/button.component";
 @Component({
   selector: 'app-personlist',
   templateUrl: './personlist.component.html',
@@ -27,5 +27,8 @@ export class PersonlistComponent implements OnInit {
 
   }
 
+displayAlert() : any {
+  alert("This was sent from the parent component")
+  }
 
 }

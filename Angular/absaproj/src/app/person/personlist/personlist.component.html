@@ -20,3 +20,5 @@
 
 <a  routerLink="/people/Create" class="btn btn-primary" role="button">Create new Person</a>
 
+<app-button [buttontext]="'Calling from parent component'" (outputEvent) = "displayAlert()"></app-button>
+
