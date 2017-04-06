@@ -10,12 +10,13 @@ import { AlertModule } from 'ng2-bootstrap';
 import { PersonEditComponent } from './person/person-edit/person-edit.component';
 import { PersonCreateComponent } from './person/person-create/person-create.component';
 import { ButtonComponent } from './shared/button/button.component';
+import { LoginComponent } from './authentication/login/login.component';
 
 const appRoutes: Routes = [
   { path: 'people', component: PersonlistComponent },
   { path: 'people/Create', component: PersonCreateComponent },
   { path: 'people/:id', component: PersonEditComponent },
-
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     PersonlistComponent,
     PersonEditComponent,
     PersonCreateComponent,
-    ButtonComponent
+    ButtonComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

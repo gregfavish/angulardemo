@@ -13,7 +13,8 @@ using Data;
 
 namespace AbsaProj.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*", SupportsCredentials = true)]
+    [Authorize]
     public class CountriesController : ApiController
     {
         private AbsaEntities db = new AbsaEntities();

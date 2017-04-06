@@ -14,17 +14,17 @@ export class PersonService {
   }
 
    getPeople() : any {
-    return this.http.get(this.apiaddress)
+    return this.http.get(this.apiaddress,{withCredentials: true})
     .map((res:Response) => res.json());
   }
 
     getPerson(id :number ) : any {
-    return this.http.get(this.apiaddress+id)
+    return this.http.get(this.apiaddress+id,{withCredentials: true})
     .map((res:Response) => res.json());
   }
 
   savePerson (person :any){
-return this.http.post(this.apiaddress,person)
+return this.http.post(this.apiaddress,person,{withCredentials: true})
     .map((res:Response) => res.json());
 }
 

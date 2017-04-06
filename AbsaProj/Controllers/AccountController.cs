@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Http.Cors;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -13,6 +14,7 @@ using AbsaProj.Models;
 namespace AbsaProj.Controllers
 {
     [Authorize]
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*", SupportsCredentials = true)]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -100,6 +102,23 @@ namespace AbsaProj.Controllers
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
+            }
+        }
+
+        // POST: /Account/Login
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult> LoginAPi(LoginViewModel model)
+        {
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, change to shouldLockout: true
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    return Json(true);
+                default:
+                    return Json(false);
             }
         }
 
