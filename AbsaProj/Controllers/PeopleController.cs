@@ -7,11 +7,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using Data;
 
 namespace AbsaProj.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class PeopleController : ApiController
     {
         private AbsaEntities db = new AbsaEntities();
@@ -35,46 +37,6 @@ namespace AbsaProj.Controllers
             return Ok(PersonModelMap(person));
         }
 
-        // PUT: api/People/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutPerson(int id, Person person)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != person.PersonId)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(person).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PersonExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        private bool PersonExists(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         // POST: api/People
         [ResponseType(typeof(Person))]
         public IHttpActionResult PostPerson(PersonModel person)
@@ -83,12 +45,22 @@ namespace AbsaProj.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var personDbModel = PersonDbap(person);
-            db.Persons.Add(personDbModel);
+            if (person.PersonId !=0)
+            {
+                var personInDb = db.Persons.Single(x => x.PersonId == person.PersonId);
+                MapPersonModelTOExistingPerson(person, personInDb);
+            }
+            else
+            {
+                var personDbModel = PersonDbap(person);
+                db.Persons.Add(personDbModel);
+            }
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = personDbModel.PersonId }, person);
+            return CreatedAtRoute("DefaultApi", new { id = person.PersonId }, person);
         }
+
+   
 
 
         private PersonModel PersonModelMap(Person x)
@@ -109,8 +81,16 @@ namespace AbsaProj.Controllers
             {
                 Name = x.Name,
                 Surname = x.Surname,
-                CountryId = x.CountryId
+                CountryId = x.CountryId,
+                PersonId = x.PersonId
             };
+        }
+
+        private void MapPersonModelTOExistingPerson(PersonModel person, Person personInDb)
+        {
+            personInDb.Name = person.Name;
+            personInDb.Surname = person.Surname;
+            personInDb.CountryId = person.CountryId;
         }
 
 

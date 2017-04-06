@@ -23,6 +23,9 @@ export class PersonService {
     .map((res:Response) => res.json());
   }
 
-
+  savePerson (person :any){
+return this.http.post(this.apiaddress,person)
+    .map((res:Response) => res.json());
+}
 
 }

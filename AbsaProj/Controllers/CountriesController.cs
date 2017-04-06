@@ -7,11 +7,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using Data;
 
 namespace AbsaProj.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CountriesController : ApiController
     {
         private AbsaEntities db = new AbsaEntities();

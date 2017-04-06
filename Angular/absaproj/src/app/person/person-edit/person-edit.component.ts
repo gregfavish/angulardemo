@@ -17,14 +17,14 @@ export class PersonEditComponent implements OnInit {
 
    person: any;
    countries : any;
-  constructor(private personService :PersonService,  private activatedRoute: ActivatedRoute, private countryService: CountryService
+  constructor(private personService :PersonService,  private activatedRoute: ActivatedRoute, private countryService: CountryService,private router: Router
 ) { }
 
   ngOnInit() {
- this.countryService.getCountries().subscribe(
+      this.countryService.getCountries().subscribe(
         res=>this.countries=res
         );
-        
+
     this.activatedRoute.params.subscribe(params => {
             let id = params['id'];
 
@@ -32,8 +32,13 @@ export class PersonEditComponent implements OnInit {
                 .subscribe(p => {
                     this.person = p;
                 })
-        });
+        });       
+  }
 
-        
+  submit() :void {
+    this.personService.savePerson(this.person)
+                .subscribe(p => {
+      this.router.navigate(['/people']);
+                })
   }
 }
