@@ -1,16 +1,22 @@
 <h3>People and thier countries</h3>
-<table class="table-bordered" >
+<table class="table table-bordered " >
   <tr>
     <th>Name</th>
     <th>Surname</th>
     <th>Country</th>
   </tr>
-
+<tbody>
  <tr *ngFor="let person of people; let i = index"> 
        <td>{{person.name}}</td>
        <td>{{person.surname}}</td>
        <td>{{person.countryText}}</td>
-        <td  (click)="onSelect(person)">Edit </td>
+
+        <td><a class="btn btn-defualt" role="button" [routerLink]="['/people',  person.personId ]">Edit</a>
+</td>
 
          </tr>
+         </tbody>
 </table>
+
+<a  routerLink="/people/Create" class="btn btn-primary" role="button">Create new Person</a>
+
