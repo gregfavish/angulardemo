@@ -4,13 +4,28 @@ import { Http, Response } from '@angular/http';
 
 @Injectable()
 export class AuthenticationService {
-private apiaddress:string;
-  constructor(private http: Http) { 
-        this.apiaddress = 'http://localhost:51876/Account/LoginApi'
+  private loggedin :boolean= false;
+  private apiaddress: string;
+  constructor(private http: Http) {
+    this.apiaddress = 'http://localhost:51876/Account/Login'
   }
 
-  attemptLogin(input : LoginDetails){
-     return this.http.post(this.apiaddress,input)
-    .map((res:Response) => res.json());
+  attemptLogin(input: LoginDetails, callback) {
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', this.apiaddress, true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.withCredentials = true;
+    xhr.onload = function () {
+      // do something to response
+      callback()
+      this.loggedin =true;
+    };
+    xhr.send("Email=" + input.Email + "&Password=" + input.Password);
   }
+
+  isLoggedIn(){
+    return this.loggedin;
+  }
+
 }

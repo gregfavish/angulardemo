@@ -20,14 +20,10 @@ export class LoginComponent implements OnInit {
   }
 
     submit() :void {
-    this.authService.attemptLogin(this.logindetails)
-                .subscribe(p => {
-                  if(p){
-                    this.router.navigate(['/people/create']);
-                  }else(
-                    alert("Login not successful")
-                  )
-                })
+    this.authService.attemptLogin(this.logindetails,function(){
+       this.router.navigate(['/people/create']);
+    })
+               
   }
 
 }
