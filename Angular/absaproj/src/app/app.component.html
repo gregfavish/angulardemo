@@ -4,16 +4,18 @@
     <div class="navbar-header">
       <a class="navbar-brand" routerLink="/people" href="#">Absa Project</a>
     </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li *ngIf="authService.isLoggedIn()" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" ><a href="#" routerLink="/people/Create">Create New Person</a></li>
-        <li *ngIf="authService.isLoggedIn()" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" ><a  href="#" routerLink="/people">All people</a></li>
+    <div class="collapse navbar-collapse">
 
+      <ul class="nav navbar-nav">
+        <li *ngIf="authService.isLoggedIn()" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active"><a href="#" routerLink="/people/Create">Create New Person</a></li>
+        <li *ngIf="authService.isLoggedIn()" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active"><a href="#" routerLink="/people">All people</a></li>
       </ul>
+
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!authService.isLoggedIn()" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active"> <a routerLink="/login" href="#">Login</a></li>
         <li *ngIf="authService.isLoggedIn()"> <a class="btn btn-link" (click)="logout()">Logout</a></li>
       </ul>
+
     </div>
   </div>
 
@@ -25,6 +27,5 @@
     <div class="col-md-11">
       <router-outlet></router-outlet>
     </div>
-
   </div>
 </div>
