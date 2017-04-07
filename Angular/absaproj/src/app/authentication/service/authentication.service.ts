@@ -4,33 +4,32 @@ import { Http, Response } from '@angular/http';
 
 @Injectable()
 export class AuthenticationService {
-  private loggedin :boolean= false;
+  private loggedin: boolean = false;
   private apiaddress: string;
+
   constructor(private http: Http) {
     this.apiaddress = 'http://localhost:51876/Account/Login'
   }
 
-  attemptLogin(input: LoginDetails, callback) {
+  attemptLogin(input: LoginDetails) {
 
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', this.apiaddress, false);
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.withCredentials = true;
-    let success = false;
-    xhr.onload = function () {
-      // do something to response
-            success = true;
-          callback();
-    };
-          
-            this.loggedin=success;
-
-    xhr.send("Email=" + input.Email + "&Password=" + input.Password);
-    
+    return this.http.post(this.apiaddress, input, { withCredentials: true })
+      .map((res: Response) => res.json());
   }
 
-  isLoggedIn(){
-    return this.loggedin;
+  UserLoggedIn() {
+    localStorage.setItem('loggedin', "true");
+  }
+
+  UserLoggedOut() {
+    localStorage.setItem('loggedin', "false");
+  }
+
+
+  isLoggedIn() {
+   var result= localStorage.getItem('loggedin');
+
+    return result == "true";
   }
 
 }

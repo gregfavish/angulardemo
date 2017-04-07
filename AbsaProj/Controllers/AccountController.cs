@@ -103,28 +103,28 @@ namespace AbsaProj.Controllers
         }
 
         [System.Web.Mvc.AllowAnonymous]
-        public ActionResult Login(string Email, string Password )
+        public ActionResult Login(LoginViewModel model )
         {
-
-            var model = new LoginViewModel() {Email = "a@b.com", Password = "abc123"};
+            try { 
             string returnUrl = "/";
 
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result =  SignInManager.PasswordSignInAsync(Email, Password, true, shouldLockout: false).Result;
+            var result =  SignInManager.PasswordSignInAsync(model.Email, model.Password, true, shouldLockout: false).Result;
             switch (result)
             {
                 case SignInStatus.Success:
                     return Json(true);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = true });
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return Json(false);
+            }
+            }
+            catch
+            {
+                return Json(false);
             }
         }
 

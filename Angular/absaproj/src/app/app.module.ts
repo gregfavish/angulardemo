@@ -12,14 +12,12 @@ import { PersonCreateComponent } from './person/person-create/person-create.comp
 import { ButtonComponent } from './shared/button/button.component';
 import { LoginComponent } from './authentication/login/login.component';
 import {CanActivateViaAuthGuard} from './authentication/service/routegaurd'
-import {AuthenticationService} from './authentication/service/authentication.service'
+import {AuthenticationService} from './authentication/service/authentication.service';
 
 const appRoutes: Routes = [
-  { path: 'people', component: PersonlistComponent,canActivate: [
-    CanActivateViaAuthGuard
-  ] },
-  { path: 'people/Create', component: PersonCreateComponent },
-  { path: 'people/:id', component: PersonEditComponent },
+  { path: 'people', component: PersonlistComponent,canActivate: [CanActivateViaAuthGuard ] },
+  { path: 'people/Create', component: PersonCreateComponent,canActivate: [CanActivateViaAuthGuard ]  },
+  { path: 'people/:id', component: PersonEditComponent ,canActivate: [CanActivateViaAuthGuard ] },
   { path: 'login', component: LoginComponent },
 ];
 
@@ -30,7 +28,8 @@ const appRoutes: Routes = [
     PersonEditComponent,
     PersonCreateComponent,
     ButtonComponent,
-    LoginComponent
+    LoginComponent,
+
   ],
   imports: [
     BrowserModule,

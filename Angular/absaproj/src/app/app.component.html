@@ -2,28 +2,21 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <a class="navbar-brand" routerLink="/people" href="#">Absa People</a>
-            <a class="navbar-brand" routerLink="/login" href="#">Login</a>
-
     </div>
-     </div><!-- /.container-fluid -->
+    <ul class="nav navbar-nav navbar-right">
+      <li  *ngIf="!authService.isLoggedIn()"> <a class="navbar-brand" routerLink="/login" href="#">Login</a></li>
+      <li  *ngIf="authService.isLoggedIn()"> <a class="navbar-brand" routerLink="/logout" href="#">Logout</a></li>
+    </ul>
+  </div>
+  <!-- /.container-fluid -->
 </nav>
 <div class="container-fluid">
   <div class="row">
-<div class="col-md-1"></div>
-  <div class="col-md-11">  <router-outlet></router-outlet>
+    <div class="col-md-1"></div>
+    <div class="col-md-11">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
 </div>
-
-  </div>
-  </div>
- 
-
-
-
-
