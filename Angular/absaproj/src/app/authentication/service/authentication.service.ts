@@ -8,12 +8,12 @@ export class AuthenticationService {
   private apiaddress: string;
 
   constructor(private http: Http) {
-    this.apiaddress = 'http://localhost:51876/Account/Login'
+    this.apiaddress = 'http://localhost:51876/Account/'
   }
 
   attemptLogin(input: LoginDetails) {
 
-    return this.http.post(this.apiaddress, input, { withCredentials: true })
+    return this.http.post(this.apiaddress+"Login", input, { withCredentials: true })
       .map((res: Response) => res.json());
   }
 
@@ -28,8 +28,13 @@ export class AuthenticationService {
 
   isLoggedIn() {
    var result= localStorage.getItem('loggedin');
-
     return result == "true";
+  }
+
+  attemptLogout(){
+    sessionStorage.removeItem('accessToken');
+     return this.http.get(this.apiaddress+"Logoff", { withCredentials: true })
+      .map((res: Response) => res.json());
   }
 
 }

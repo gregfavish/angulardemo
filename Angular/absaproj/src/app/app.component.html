@@ -6,7 +6,7 @@
     </div>
     <ul class="nav navbar-nav navbar-right">
       <li  *ngIf="!authService.isLoggedIn()"> <a class="navbar-brand" routerLink="/login" href="#">Login</a></li>
-      <li  *ngIf="authService.isLoggedIn()"> <a class="navbar-brand" routerLink="/logout" href="#">Logout</a></li>
+      <li  *ngIf="authService.isLoggedIn()"> <a class="navbar-brand"  (click)="logout()">Logout</a></li>
     </ul>
   </div>
   <!-- /.container-fluid -->

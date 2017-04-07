@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/people/Create']);
       }
       else {
-        alert("Login failed")
+        alert("Login failed for this username/password")
       }
     })
 

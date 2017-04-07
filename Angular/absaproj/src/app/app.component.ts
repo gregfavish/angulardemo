@@ -14,6 +14,17 @@ export class AppComponent implements OnInit {
   ngOnInit() {
   }
 
-  
+  logout(): void {
+    this.authService.attemptLogout().subscribe(res => {
+      if (res) {
+        this.authService.UserLoggedOut();
+        this.router.navigate(['/login']);
+      }
+      else {
+        alert("Logout failed failed")
+      }
+    })
+
+  }
 }
 

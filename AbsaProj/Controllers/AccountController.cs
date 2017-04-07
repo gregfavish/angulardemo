@@ -68,40 +68,7 @@ namespace AbsaProj.Controllers
             return new EmptyResult();
         }
 
-
-       // GET: /Account/Login
-       //[System.Web.Mvc.AllowAnonymous]
-       // public ActionResult Login(string returnUrl)
-       // {
-       //     ViewBag.ReturnUrl = returnUrl;
-       //     return View();
-       // }
-
-        // POST: /Account/Login
-        [System.Web.Mvc.HttpPost]
-        [System.Web.Mvc.AllowAnonymous]
-        [System.Web.Mvc.HttpOptions]
-        public ActionResult LoginAPi(LoginViewModel model)
-        {
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false).Result;
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return Json(true, JsonRequestBehavior.AllowGet);
-                default:
-                    return Json(false, JsonRequestBehavior.AllowGet);
-            }
-        }
-
-        [System.Web.Mvc.HttpGet]
-        [System.Web.Mvc.AllowAnonymous]
-        public ActionResult LoginAPi()
-        {
-          return Json(true,JsonRequestBehavior.AllowGet);
-        }
-
+    
         [System.Web.Mvc.AllowAnonymous]
         public ActionResult Login(LoginViewModel model )
         {
@@ -422,14 +389,15 @@ namespace AbsaProj.Controllers
             return View(model);
         }
 
-        //
-        // POST: /Account/LogOff
-        [System.Web.Mvc.HttpPost]
-        [ValidateAntiForgeryToken]
+        ////
+        //// POST: /Account/LogOff
+        //[System.Web.Mvc.HttpPost]
+        //[ValidateAntiForgeryToken]
+        [System.Web.Mvc.AllowAnonymous]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return Json(true,JsonRequestBehavior.AllowGet);
         }
 
         //
