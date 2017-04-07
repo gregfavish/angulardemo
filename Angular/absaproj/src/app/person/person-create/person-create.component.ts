@@ -3,6 +3,7 @@ import { CountryService } from '../service/country.service'
 import { PersonService } from '../service/person.service'
 import { ActivatedRoute, Router } from "@angular/router";
 import { Person } from '../person'
+import { Country } from '../country'
 
 @Component({
   selector: 'app-person-create',
@@ -13,7 +14,7 @@ import { Person } from '../person'
 })
 export class PersonCreateComponent implements OnInit {
   person: Person;
-  countries: any;
+  countries: Array<Country>;
 
   constructor(private personService: PersonService, private activatedRoute: ActivatedRoute, private countryService: CountryService, private router: Router) { }
 
@@ -21,7 +22,7 @@ export class PersonCreateComponent implements OnInit {
     this.countryService.getCountries().subscribe(
       res => this.countries = res
     );
-    this.person = new Person("","","",0,0);
+    this.person = new Person("", "", "", 0, 0);
   }
 
   submit(): void {

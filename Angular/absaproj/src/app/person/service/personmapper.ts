@@ -5,12 +5,12 @@ import { Person } from '../person';
 export class PersonMapperService {
 
     parseArray(jsonData): Person[] {
-        var posts = new Array<Person>();
+        var people = new Array<Person>();
             var data = jsonData;
             for (var i = 0; i < data.length; i++) {
-                posts.push(this.parse(data[i]));
+                people.push(this.parse(data[i]));
             }
-            return posts;
+            return people;
     };
 
   
@@ -19,13 +19,13 @@ export class PersonMapperService {
         if (!data)
             throw Error("Response Data Malformed");
 
-        var post: Person = new Person(
+        var person: Person = new Person(
             data.name,
             data.surname,
             data.countryText,
             data.countryId,
             data.personId
         );
-        return post;
+        return person;
     }
 }

@@ -14,6 +14,7 @@ import { LoginComponent } from './authentication/login/login.component';
 import {CanActivateViaAuthGuard} from './authentication/service/routegaurd'
 import {AuthenticationService} from './authentication/service/authentication.service';
 import {PersonMapperService} from './person/service/personmapper';
+import {CountryMapperService} from './person/service/countrymapper';
 
 const appRoutes: Routes = [
   { path: 'people', component: PersonlistComponent,canActivate: [CanActivateViaAuthGuard ] },
@@ -40,7 +41,7 @@ const appRoutes: Routes = [
   RouterModule.forRoot(appRoutes)
 
   ],
-  providers: [AuthenticationService,CanActivateViaAuthGuard,PersonMapperService],
+  providers: [AuthenticationService,CanActivateViaAuthGuard,PersonMapperService,CountryMapperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
