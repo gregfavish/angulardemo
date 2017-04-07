@@ -12,7 +12,7 @@ import { LoginDetails } from "../logindetails"
 })
 export class LoginComponent implements OnInit {
   logindetails: LoginDetails;
-
+  loginFailed : boolean = false;
   constructor(private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
@@ -20,13 +20,15 @@ export class LoginComponent implements OnInit {
   }
 
   submit(): void {
+     this.loginFailed = false;
+
     this.authService.attemptLogin(this.logindetails).subscribe(res => {
       if (res) {
         this.authService.UserLoggedIn();
         this.router.navigate(['/people/Create']);
       }
       else {
-        alert("Login failed for this username/password")
+        this.loginFailed = true;
       }
     })
 
