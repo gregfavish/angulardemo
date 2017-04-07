@@ -2,13 +2,21 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" routerLink="/people" href="#">Absa People</a>
+      <a class="navbar-brand" routerLink="/people" href="#">Absa Project</a>
     </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li  *ngIf="!authService.isLoggedIn()"> <a class="navbar-brand" routerLink="/login" href="#">Login</a></li>
-      <li  *ngIf="authService.isLoggedIn()"> <a class="navbar-brand"  (click)="logout()">Logout</a></li>
-    </ul>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li *ngIf="authService.isLoggedIn()" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" ><a href="#" routerLink="/people/Create">Create New Person</a></li>
+        <li *ngIf="authService.isLoggedIn()" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" ><a  href="#" routerLink="/people">All people</a></li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="!authService.isLoggedIn()" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active"> <a routerLink="/login" href="#">Login</a></li>
+        <li *ngIf="authService.isLoggedIn()"> <a class="btn btn-link" (click)="logout()">Logout</a></li>
+      </ul>
+    </div>
   </div>
+
   <!-- /.container-fluid -->
 </nav>
 <div class="container-fluid">
