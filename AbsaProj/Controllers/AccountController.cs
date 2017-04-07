@@ -70,6 +70,7 @@ namespace AbsaProj.Controllers
 
     
         [System.Web.Mvc.AllowAnonymous]
+        [System.Web.Mvc.HttpPost]
         public ActionResult Login(LoginViewModel model )
         {
             try { 
@@ -93,6 +94,13 @@ namespace AbsaProj.Controllers
             {
                 return Json(false);
             }
+        }
+
+        [System.Web.Mvc.HttpOptions]
+        public ActionResult Login()
+        {
+            return Json(true);
+
         }
 
         //

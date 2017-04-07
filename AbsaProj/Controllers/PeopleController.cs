@@ -20,6 +20,14 @@ namespace AbsaProj.Controllers
         private AbsaEntities db = new AbsaEntities();
 
         // GET: api/People
+        [HttpOptions]
+        [AllowAnonymous]
+        public bool OptionsResponse()
+        {
+            return true;
+        }
+
+        [HttpGet]
         public IEnumerable<PersonModel> GetPersons()
         {
             return db.Persons.ToList().Select(x=>PersonModelMap(x));
