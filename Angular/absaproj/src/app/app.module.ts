@@ -13,6 +13,7 @@ import { ButtonComponent } from './shared/button/button.component';
 import { LoginComponent } from './authentication/login/login.component';
 import {CanActivateViaAuthGuard} from './authentication/service/routegaurd'
 import {AuthenticationService} from './authentication/service/authentication.service';
+import {PersonMapperService} from './person/service/personmapper';
 
 const appRoutes: Routes = [
   { path: 'people', component: PersonlistComponent,canActivate: [CanActivateViaAuthGuard ] },
@@ -39,7 +40,7 @@ const appRoutes: Routes = [
   RouterModule.forRoot(appRoutes)
 
   ],
-  providers: [AuthenticationService,CanActivateViaAuthGuard],
+  providers: [AuthenticationService,CanActivateViaAuthGuard,PersonMapperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

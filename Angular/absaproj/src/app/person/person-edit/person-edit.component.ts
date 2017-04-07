@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PersonService} from '../service/person.service'
 import {CountryService} from '../service/country.service'
+import {Person} from '../person'
 
 import { ActivatedRoute,Router } from "@angular/router";
 import 'rxjs/add/operator/switchMap';
@@ -15,7 +16,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class PersonEditComponent implements OnInit {
 
-   person: any;
+   person: Person;
    countries : any;
   constructor(private personService :PersonService,  private activatedRoute: ActivatedRoute, private countryService: CountryService,private router: Router
 ) { }

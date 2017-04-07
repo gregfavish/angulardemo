@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {PersonService} from '../service/person.service'
 import { ActivatedRoute,Router } from "@angular/router";
 import {ButtonComponent} from "../../shared/button/button.component";
+import {Person} from '../person'
+
 @Component({
   selector: 'app-personlist',
   templateUrl: './personlist.component.html',
@@ -10,7 +12,7 @@ import {ButtonComponent} from "../../shared/button/button.component";
 
 })
 export class PersonlistComponent implements OnInit {
-    people: any;
+    people: Array<Person>;
 
   constructor(private personService :PersonService,  private router: Router,
 ) { }
@@ -19,12 +21,11 @@ export class PersonlistComponent implements OnInit {
       this.personService.getPeople().subscribe(
         res=>this.people=res
         );
-  }
+  } 
 
 
-   onSelect(person : any) : any {
+   onSelect(person : Person)  {
      this.router.navigate(['/people', person.personId]);
-
   }
 
 displayAlert() : any {
