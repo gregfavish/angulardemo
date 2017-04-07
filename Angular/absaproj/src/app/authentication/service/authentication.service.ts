@@ -13,15 +13,20 @@ export class AuthenticationService {
   attemptLogin(input: LoginDetails, callback) {
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', this.apiaddress, true);
+    xhr.open('POST', this.apiaddress, false);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.withCredentials = true;
+    let success = false;
     xhr.onload = function () {
       // do something to response
-      callback()
-      this.loggedin =true;
+            success = true;
+          callback();
     };
+          
+            this.loggedin=success;
+
     xhr.send("Email=" + input.Email + "&Password=" + input.Password);
+    
   }
 
   isLoggedIn(){

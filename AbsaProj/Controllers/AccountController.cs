@@ -116,7 +116,7 @@ namespace AbsaProj.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return View(model);
+                    return Json(true);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -124,7 +124,7 @@ namespace AbsaProj.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                    return Json(false);
             }
         }
 
