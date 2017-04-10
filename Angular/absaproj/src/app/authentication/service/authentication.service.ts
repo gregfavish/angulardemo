@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LoginDetails } from '../logindetails';
 import { Http, Response } from '@angular/http';
-import {AppSettings} from '../../shared/appSettings';
 
 const LOGGED_IN_KEY: string = "loggedin";
 
@@ -11,11 +10,12 @@ export class AuthenticationService {
   private apiaddress: string;
 
   constructor(private http: Http) {
+    this.apiaddress = 'http://localhost:51876/Account/'
   }
 
   attemptLogin(input: LoginDetails) {
 
-    return this.http.post(AppSettings.API_ENDPOINT+"Account/Login", input, { withCredentials: true })
+    return this.http.post(this.apiaddress + "Login", input, { withCredentials: true })
       .map((res: Response) => res.json());
   }
 
@@ -35,7 +35,7 @@ export class AuthenticationService {
 
   attemptLogout(){
     sessionStorage.removeItem('accessToken');
-     return this.http.get(AppSettings.API_ENDPOINT+"Account/Logoff", { withCredentials: true })
+     return this.http.get(this.apiaddress + "Logoff", { withCredentials: true })
       .map((res: Response) => res.json());
   }
 
