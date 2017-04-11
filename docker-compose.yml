@@ -9,9 +9,9 @@ services:
 
   database: #name of the second service
     build: Database # specify the directory of the Dockerfile
-	args:
-                ACCEPT_EULA: Y
-                SA_PASSWORD: yourStrong(!)Password
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=yourStrong(!)Password
     ports:
       - "1433:1433" #specify ports forewarding
 
