@@ -1,0 +1,19 @@
+FROM microsoft/mssql-server-linux:ctp1-4
+
+
+RUN mkdir -p /dbscripts
+ADD startdb.sh /dbscripts/startdb.sh
+ADD setup.sql /dbscripts/setup.sql
+ADD seeddb.sh /dbscripts/seeddb.sh
+
+RUN chmod +x /dbscripts/startdb.sh
+RUN chmod +x /dbscripts/setup.sql
+RUN chmod +x /dbscripts/seeddb.sh
+
+EXPOSE 1433
+
+CMD /bin/bash dbscripts/startdb.sh
+
+
+
+
