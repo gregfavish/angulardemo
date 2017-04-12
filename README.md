@@ -5,7 +5,7 @@ The application user is authenticated before access is granted to the site - use
 
 # Running the application locally:
 
-The angular frontend and database are fully dockerised - just run 'docker-compose up' on the root directory (give it around 60 seconds to fully create and see the database) - .NET web API docker coming soon - it must be started manually via visual studio for now
+The angular frontend and database are fully dockerised - just run 'docker-compose up' on the root directory (give it around 60 seconds to fully create and seed the database) - .NET web API docker coming soon - it must be started manually via visual studio for now
 
 
 # Future Improvements
