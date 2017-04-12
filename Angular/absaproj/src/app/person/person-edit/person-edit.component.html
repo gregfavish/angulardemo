@@ -1,19 +1,23 @@
 <h3>Edit person:</h3>
-<form *ngIf="person && allLoaded()">
+<form *ngIf="person && allLoaded()" #editForm="ngForm">
   <div class="form-group">
     <label>Name:</label>
-    <input class="form-control"    [(ngModel)]="person.name" name="person-name">
+    <input class="form-control" required [(ngModel)]="person.name" name="person-name" #name="ngModel">
+    <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">Required</div>
   </div>
   <div class="form-group">
     <label>Surname:</label>
-    <input class="form-control"[(ngModel)]="person.surname" name="person-surname">
+    <input class="form-control" required [(ngModel)]="person.surname" name="person-surname" #surname="ngModel">
+    <div *ngIf="surname.errors && (surname.dirty || surname.touched)" class="alert alert-danger">Required</div>
   </div>
-   <div class="form-group">
+  <div class="form-group">
     <label>Country:</label>
-<select class="form-control" [(ngModel)]="person.countryId" name="country-select">
+    <select required class="form-control" [(ngModel)]="person.countryId" name="country-select" #country="ngModel">
     <option *ngFor="let country of countries;" [value]="country.id">{{country.name}}</option>
-</select>  </div>
+</select>
+    <div *ngIf="country.errors && (country.dirty || country.touched)" class="alert alert-danger">Required</div>
+  </div>
 
-<button type="button" class="btn btn-default" (click)="submit()">Submit</button>
+  <button type="button" class="btn btn-default" (click)="submit();editForm.reset()" [disabled]="!editForm.form.valid">Submit</button>
 </form>
-<div *ngIf = "!allLoaded()" class="alert alert-info" role="alert">Loading...</div>
+<div *ngIf=" !allLoaded() " class="alert alert-info " role="alert ">Loading...</div>
