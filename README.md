@@ -7,7 +7,7 @@ The application user is authenticated before access is granted to the site - use
 
 The database continer requires at least 3,25 gigs ram (i set it to 4GB locally - to change the default image ram allowance see here: http://stackoverflow.com/questions/32834082/how-to-increase-docker-machine-memory-mac)
 
-The angular frontend and database are fully dockerised - just run 'docker-compose up' on the root directory (give it around 60 seconds after starting the container to fully create and seed the database)
+The angular frontend and database are fully dockerised - just run 'docker-compose up' on the root directory (give it around 60 seconds after starting the container to fully create and seed the database). The database can be found on localhost:1433 and the angular app can be found on localhost:4200
 
 .NET web API docker coming soon - it must be started manually via visual studio for now - see "issues encountered" for more info
 
