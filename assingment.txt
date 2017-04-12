@@ -5,6 +5,7 @@ Additional Info
 Improvemtns - improve environemntal configuration 
 			- Authentication works but could be better integrated between server and client
 			-centralize api url
+			-error handling on client side when things are slow or error on the API
 	
 things to install : sql server local 
 	
@@ -27,12 +28,4 @@ cd C:/dev/AbsaProj/Database
 docker build -t database-sql:dev .
 docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yourStrong(!)Password' -p 1433:1433 -d database-sql:dev
 docker exec -it 4e /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'yourStrong(!)Password'
-
-
-
-
-
-Submission
-
-Publish code to github by Wednesday 12 April 2017 COB (even if an incomplete state). Send an email to  Donovan.Muller@absa.co.za with link to github and details for logging in (e.g. create an account first or log in with the following details etc.)
 
