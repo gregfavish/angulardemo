@@ -3,7 +3,7 @@
 This is a simple angular 2 application that communicates to a .NET web API which uses SQL server for data storage.
 The application user is authenticated before access is granted to the site - use the username "a@b.com" and password 'abc123'
 
-# Running the application locally:
+# Running the application locally
 
 The database continer requires at least 3,25 gigs ram (i set it to 4GB locally - to change the default image ram allowance see here: http://stackoverflow.com/questions/32834082/how-to-increase-docker-machine-memory-mac)
 
