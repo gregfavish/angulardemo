@@ -6,7 +6,7 @@ Improvemtns - improve environemntal configuration
 			- Authentication works but could be better integrated between server and client
 			-centralize api url
 	
-things to install :docker,visual studio 2015,sql server local , sql server management studio , angular cli
+things to install : sql server local 
 	
 Angular
 
