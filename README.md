@@ -1,6 +1,6 @@
 # Absa Assesment
 
-This is a simple angular 2 application that communicates to a .net API which uses SQL server for data storage.
+This is a simple angular 2 application that communicates to a .NET web API which uses SQL server for data storage.
 The application user is authenticated before access is granted to the site - use the username "a@b.com" and password 'abc123'
 
 # Running the application locally:
@@ -33,10 +33,10 @@ The angular frontend and database are fully dockerised - just run 'docker-compos
 
 # Issues encountered
 
-- Linux continers for the angular site and the database worked fine in windows 8. An upgrade to windows 10 was required to run windows continers which are required (https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/system-requirements). This reninstall lost me a day of time due to reinstallation of IDES, docker, pulling images again etc.
+- Linux continers for the angular site and the database worked fine in windows 8. An upgrade to windows 10 was required to run windows continers which are required for the .NET web API (https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/system-requirements). This reninstall lost me a day of time due to reinstallation of IDES, docker, pulling images again etc.
 
-- The image that would work natively with the API is microsoft/aspnet/ -https://hub.docker.com/r/microsoft/aspnet/ - this image is about 5GB and would take about 22 hours to pull on the network speeds I was getting
+- The image that would work natively with the .NET web API is microsoft/aspnet/ -https://hub.docker.com/r/microsoft/aspnet/ - this image is about 5GB and would take about 22 hours to pull on the network speeds I was getting
 
-- Running windows and linux conainers seems to be doable but still a challenge https://stefanscherer.github.io/run-linux-and-windows-containers-on-windows-10/
+- Running windows and linux containers simultaneously seems to be doable but still a challenge https://stefanscherer.github.io/run-linux-and-windows-containers-on-windows-10/
 
 	
