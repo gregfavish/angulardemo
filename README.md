@@ -18,7 +18,28 @@ The angular frontend and database are fully dockerised - just run 'docker-compos
 
 -Error handling on client side when the API is slow or errors on the API (make sure all API calls errrors and delays are handled in a uniform way -creating an error page/notification and loading bars / spinners on the templates-by possible using a base class)
 
-#Lessons Learned
+-
 
+# Lessons Learned
+
+-Learned to use the angular CLI to spin up a fully scaffoleded angular frontend that is easy controllable using npm via command line
+
+-Learned the power of using typescript in the browser and leveraging types as opposed to dynamic js objects
+
+-Ran into many CORS issues implimenting the API and angular frontend and how to resolve them (https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS)
+
+-Desinged authentication to work using Microsoft.Owin and had to think about how authentication works in the context of a SPA
+
+-Docker! Learned to build custom images based off base images created (e.g a linux image with SQL server installed) , starting containers based off these images and lanuching images together using docker compose. This allows easy setup of a new environemnt once the docker files are fully working
+
+-ASP.net API worked well in development but a big pain to "dockerise" (image very large , running windows and linux contianers simultaneously)
+
+# Issues encountered
+
+-Linux continers for the angular site and the database worked fine in windows 8. An upgrade to windows 10 was required to run windows continers which are required (https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/system-requirements). This reninstall lost me a day of time due to reinstallation of IDES, docker, pulling images again etc.
+
+-The image that would work natively with the API is microsoft/aspnet/ -https://hub.docker.com/r/microsoft/aspnet/ - this image is about 5GB and would take about 22 hours to pull on the network speeds I was getting
+
+-Running windows and linux conainers seems to be doable but still a challenge https://stefanscherer.github.io/run-linux-and-windows-containers-on-windows-10/
 
 	
