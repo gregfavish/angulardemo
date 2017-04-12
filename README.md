@@ -21,7 +21,7 @@ The angular frontend and database are fully dockerised - just run 'docker-compos
 
 # Lessons Learned
 
-- Learned to use the angular CLI to spin up a fully scaffoleded angular frontend that is easy controllable using npm via command line
+- Learned to use the angular CLI to spin up a fully scaffolded angular frontend that is easy controllable using npm via command line
 
 - Learned the power of using typescript in the browser and leveraging types as opposed to dynamic js objects
 
