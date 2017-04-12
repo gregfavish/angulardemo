@@ -23,6 +23,8 @@ The angular frontend and database are fully dockerised - just run 'docker-compos
 
 - Error handling on client side when the API errors (make sure all API calls errrors and delays are handled in a uniform way -creating an common error page/notifications)
 
+- Use angular components for common elements like loaders and common form validation html
+
 - Adding client side form validation
 
 - The dabase is recreated upon the database docker container spinning up and all previous data is lost. Volumes can be used to keep previously persisted data if required for prod
