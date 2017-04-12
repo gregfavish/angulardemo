@@ -19,6 +19,8 @@ The angular frontend and database are fully dockerised - just run 'docker-compos
 
 - Error handling on client side when the API is slow or errors on the API (make sure all API calls errrors and delays are handled in a uniform way -creating an error page/notification and loading bars / spinners on the templates-by possible using a base class)
 
+- The dabase is recreated upon the database docker container spinning up and all previous data is lost. Volumes can be used to keep previously persisted data if required for prod
+
 # Lessons Learned
 
 - Learned to use the angular CLI to spin up a fully scaffolded angular frontend that is easy controllable using npm via command line
