@@ -31,7 +31,7 @@ The angular frontend and database are fully dockerised - just run 'docker-compos
 
 - Docker! Learned to build custom images based off base images created (e.g a linux image with SQL server installed) , starting containers based off these images and lanuching images together using docker compose. This allows easy setup of a new environemnt once the docker files are fully working
 
-- ASP.net API worked well in development but a big pain to "dockerise" (image very large , running windows and linux contianers simultaneously) also much simpler to use docker targeting one OS as targetting both windows and linux on one PC has many pitfalls
+- ASP.net API worked well in development but a big pain to "dockerise" (image very large) also much simpler to use docker targeting one OS as targeting both windows and linux on one PC has many pitfalls
 
 # Issues encountered
 
