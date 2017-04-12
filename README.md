@@ -9,7 +9,7 @@ The angular frontend and database are fully dockerised - just run 'docker-compos
 
 
 # Future Improvements
-- Improve environemntal configuration (make configuration on the angular side and web API configurable between different envronments (local,dev,prod etc))
+- Improve environmental configuration (make configuration on the angular side and web API configurable between different environments (local,dev,prod etc))
 
 - Authentication works but could be better integrated between server and client (is currently hooking into Microsoft.Owin cookie based security - a session cookie is sent on every api request however something like JWT tokens may be a better fit for a SPA)
 
