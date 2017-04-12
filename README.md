@@ -5,7 +5,11 @@ The application user is authenticated before access is granted to the site - use
 
 # Running the application locally:
 
-The angular frontend and database are fully dockerised - just run 'docker-compose up' on the root directory (give it around 60 seconds to fully create and seed the database) - .NET web API docker coming soon - it must be started manually via visual studio for now
+The database continer requires at least 3,25 gigs ram (i set it to 4GB locally - to change the default image ram allowance see here: http://stackoverflow.com/questions/32834082/how-to-increase-docker-machine-memory-mac)
+
+The angular frontend and database are fully dockerised - just run 'docker-compose up' on the root directory (give it around 60 seconds after starting the container to fully create and seed the database)
+
+.NET web API docker coming soon - it must be started manually via visual studio for now - see "issues encountered" for more info
 
 
 # Future Improvements
@@ -17,7 +21,9 @@ The angular frontend and database are fully dockerised - just run 'docker-compos
 
 - Centralize api url on angular (right now it is hardcoded in the services instead of injected in from a central class/config file)
 
-- Error handling on client side when the API is slow or errors on the API (make sure all API calls errrors and delays are handled in a uniform way -creating an error page/notification and loading bars / spinners on the templates-by possible using a base class)
+- Error handling on client side when the API errors (make sure all API calls errrors and delays are handled in a uniform way -creating an common error page/notifications)
+
+- Adding client side form validation
 
 - The dabase is recreated upon the database docker container spinning up and all previous data is lost. Volumes can be used to keep previously persisted data if required for prod
 
@@ -39,7 +45,7 @@ The angular frontend and database are fully dockerised - just run 'docker-compos
 
 - Linux continers for the angular site and the database worked fine in windows 8. An upgrade to windows 10 was required to run windows continers which are required for the .NET web API (https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/system-requirements). This reninstall lost me a day of time due to reinstallation of IDES, docker, pulling images again etc.
 
-- The image that would work natively with the .NET web API is microsoft/aspnet/ -https://hub.docker.com/r/microsoft/aspnet/ - this image is about 5GB and would take about 22 hours to pull on the network speeds I was getting
+- The image that would work natively with the .NET web API is microsoft/aspnet/ -https://hub.docker.com/r/microsoft/aspnet/ - this image is about 5GB and would take about 22 hours to pull on the network speeds I was getting and thus I didnt have time to complete the dockerisation of the .NET API
 
 - Running windows and linux containers simultaneously seems to be doable but still a challenge https://stefanscherer.github.io/run-linux-and-windows-containers-on-windows-10/
 
