@@ -1,5 +1,5 @@
 <h3>Edit person:</h3>
-<form *ngIf="person">
+<form *ngIf="person && allLoaded()">
   <div class="form-group">
     <label>Name:</label>
     <input class="form-control"    [(ngModel)]="person.name" name="person-name">
@@ -16,3 +16,4 @@
 
 <button type="button" class="btn btn-default" (click)="submit()">Submit</button>
 </form>
+<div *ngIf = "!allLoaded()" class="alert alert-info" role="alert">Loading...</div>

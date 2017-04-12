@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {PersonService} from '../service/person.service'
-import {CountryService} from '../service/country.service'
-import {Person} from '../person'
-import {Country} from '../country'
+import { PersonService } from '../service/person.service'
+import { CountryService } from '../service/country.service'
+import { Person } from '../person'
+import { Country } from '../country'
 
-import { ActivatedRoute,Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 
@@ -12,35 +12,45 @@ import { Observable } from 'rxjs/Observable';
   selector: 'app-person-edit',
   templateUrl: './person-edit.component.html',
   styleUrls: ['./person-edit.component.css']
-  ,      providers: [PersonService,CountryService]
+  , providers: [PersonService, CountryService]
 
 })
 export class PersonEditComponent implements OnInit {
 
-   person: Person;
-   countries : Array<Country>;
-  constructor(private personService :PersonService,  private activatedRoute: ActivatedRoute, private countryService: CountryService,private router: Router
-) { }
+  person: Person;
+  countries: Array<Country>;
+  countiresLoading: boolean;
+  peopleLoading: boolean;
+
+  constructor(private personService: PersonService, private activatedRoute: ActivatedRoute, private countryService: CountryService, private router: Router
+  ) { this.peopleLoading = true; this.countiresLoading = true; }
 
   ngOnInit() {
-      this.countryService.getCountries().subscribe(
-        res=>this.countries=res
-        );
+    this.countryService.getCountries().subscribe(
+      res => {this.countries = res;
+              this.countiresLoading= false}
+    );
 
     this.activatedRoute.params.subscribe(params => {
-            let id = params['id'];
+      let id = params['id'];
 
-            this.personService.getPerson(id)
-                .subscribe(p => {
-                    this.person = p;
-                })
-        });       
+      this.personService.getPerson(id)
+        .subscribe(p => {
+          this.person = p;
+          this.peopleLoading = false;
+        })
+    });
   }
 
-  submit() :void {
+  allLoaded(){
+    return !this.countiresLoading && !this.peopleLoading;
+  }
+
+  submit(): void {
+        this.peopleLoading = true;
     this.personService.savePerson(this.person)
-                .subscribe(p => {
-      this.router.navigate(['/people']);
-                })
+      .subscribe(p => {
+        this.router.navigate(['/people']);
+      })
   }
 }

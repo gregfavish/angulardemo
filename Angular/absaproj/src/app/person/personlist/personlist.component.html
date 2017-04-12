@@ -1,5 +1,5 @@
 <h3>People and their countries</h3>
-<table class="table table-bordered " >
+<table *ngIf="!loading"class="table table-bordered" >
   <tr>
     <th>Name</th>
     <th>Surname</th>
@@ -17,7 +17,7 @@
          </tr>
          </tbody>
 </table>
-
+<div *ngIf = "loading" class="alert alert-info" role="alert">Loading...</div>
 <a  routerLink="/people/Create" class="btn btn-primary" role="button">Create new Person</a>
 
 <app-button [buttontext]="'Calling from parent component'" (outputEvent) = "displayAlert()"></app-button>
