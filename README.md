@@ -45,7 +45,7 @@ The angular frontend and database are fully dockerised - just run 'docker-compos
 
 # Issues encountered
 
-- Linux continers for the angular site and the database worked fine in windows 8. An upgrade to windows 10 was required to run windows continers which are required for the .NET web API (https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/system-requirements). This reninstall lost me a day of time due to reinstallation of IDES, docker, pulling images again etc.
+- Linux containers for the angular site and the database worked fine in windows 8. An upgrade to windows 10 was required to run windows containers which are required for the .NET web API (https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/system-requirements). This re-install lost me a day of time due to reinstallation of IDES, docker, pulling images again etc.
 
 - The image that would work natively with the .NET web API is microsoft/aspnet/ -https://hub.docker.com/r/microsoft/aspnet/ - this image is about 5GB and would take about 22 hours to pull on the network speeds I was getting and thus I didnt have time to complete the dockerisation of the .NET API
 
