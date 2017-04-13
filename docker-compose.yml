@@ -7,12 +7,12 @@ services:
     ports:
       - "4200:4200" # specify port forewarding
 
-  database: #name of the second service
-    build: Database # specify the directory of the Dockerfile
-    environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=yourStrong(!)Password
-    ports:
-      - "1433:1433" #specify ports forewarding
+  # database: #name of the second service
+    # build: Database # specify the directory of the Dockerfile
+    # environment:
+      # - ACCEPT_EULA=Y
+      # - SA_PASSWORD=yourStrong(!)Password
+    # ports:
+      # - "1433:1433" #specify ports forewarding
 
  
