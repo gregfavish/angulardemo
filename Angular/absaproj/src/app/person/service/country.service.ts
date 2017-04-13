@@ -13,7 +13,7 @@ private apiaddress :string;
     private http: Http,
     private countrymapper : CountryMapperService
   ) {
-     this.apiaddress = 'http://localhost:51876/api/Countries/'
+     this.apiaddress = 'http://absaproj20170413122357.azurewebsites.net/api/Countries/'
   }
 
    getCountries() : Observable <Array<Country>> {

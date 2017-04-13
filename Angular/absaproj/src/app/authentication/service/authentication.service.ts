@@ -10,7 +10,7 @@ export class AuthenticationService {
   private apiaddress: string;
 
   constructor(private http: Http) {
-    this.apiaddress = 'http://localhost:51876/Account/'
+    this.apiaddress = 'http://absaproj20170413122357.azurewebsites.net/Account/'
   }
 
   attemptLogin(input: LoginDetails) {

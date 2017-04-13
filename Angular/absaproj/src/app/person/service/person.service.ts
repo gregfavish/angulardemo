@@ -11,7 +11,7 @@ private apiaddress :string;
 
   constructor (
     private http: Http, private mapper :PersonMapperService) {
-      this.apiaddress = 'http://localhost:51876/api/People/'
+      this.apiaddress = 'http://absaproj20170413122357.azurewebsites.net/api/People/'
   }
 
    getPeople() : Observable<Array<Person>>  {
