@@ -12,8 +12,8 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="!authService.isLoggedIn()" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active"> <a routerLink="/login" href="#">Login</a></li>
-        <li *ngIf="authService.isLoggedIn()"> <a class="btn btn-link" (click)="logout()">Logout</a></li>
+        <li *ngIf="!authService.isLoggedIn()" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active"> <a class="login-button" routerLink="/login" href="#">Login</a></li>
+        <li *ngIf="authService.isLoggedIn()"> <a class="btn btn-link" (click)="logout()" class="logout-button">Logout</a></li>
       </ul>
 
     </div>

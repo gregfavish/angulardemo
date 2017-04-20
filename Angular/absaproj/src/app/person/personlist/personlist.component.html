@@ -1,24 +1,23 @@
 <h3>People and their countries</h3>
-<table *ngIf="!loading"class="table table-bordered" >
+<table *ngIf="!loading" class="table table-bordered personlist">
   <tr>
     <th>Name</th>
     <th>Surname</th>
     <th>Country</th>
   </tr>
-<tbody>
- <tr *ngFor="let person of people; let i = index"> 
-       <td>{{person.name}}</td>
-       <td>{{person.surname}}</td>
-       <td>{{person.countryText}}</td>
+  <tbody class="personlistbody"> 
+    <tr *ngFor="let person of people; let i = index">
+      <td>{{person.name}}</td>
+      <td>{{person.surname}}</td>
+      <td>{{person.countryText}}</td>
 
-        <td><a class="btn btn-defualt" role="button" [routerLink]="['/people',  person.personId ]">Edit</a>
-</td>
+      <td><a class="btn btn-defualt" role="button" [routerLink]="['/people',  person.personId ]">Edit</a>
+      </td>
 
-         </tr>
-         </tbody>
+    </tr>
+  </tbody>
 </table>
-<div *ngIf = "loading" class="alert alert-info" role="alert">Loading...</div>
-<a  routerLink="/people/Create" class="btn btn-primary" role="button">Create new Person</a>
+<div *ngIf="loading" class="alert alert-info" role="alert">Loading...</div>
+<a routerLink="/people/Create" class="btn btn-primary" role="button">Create new Person</a>
 
-<app-button [buttontext]="'Calling from parent component'" (outputEvent) = "displayAlert()"></app-button>
-
+<app-button [buttontext]="'Calling from parent component'" (outputEvent)="displayAlert()"></app-button>

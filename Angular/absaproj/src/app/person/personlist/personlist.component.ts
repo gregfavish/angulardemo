@@ -26,7 +26,6 @@ export class PersonlistComponent implements OnInit {
     );
   }
 
-
   onSelect(person: Person) {
     this.router.navigate(['/people', person.personId]);
   }
@@ -34,5 +33,4 @@ export class PersonlistComponent implements OnInit {
   displayAlert(): any {
     alert("This was sent from the parent component")
   }
-
 }
