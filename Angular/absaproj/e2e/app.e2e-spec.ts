@@ -27,6 +27,26 @@ describe('absaproj App', function () {
     expect(page.getLogOutButton().isPresent()).toBeFalsy();
   });
 
+  it('Wrong password should not log in', () => {
+    loginPage.navigateTo();
+    loginPage.getLoginButton().click();
+    loginPage.waiTforRouteToLoad("login");
+
+    expect(loginPage.getLoginButton().isPresent()).toBeTruthy();
+    expect(loginPage.getPasswordInput().isPresent()).toBeTruthy();
+    expect(loginPage.getEmailInput().isPresent()).toBeTruthy();
+    expect(loginPage.getLoginFormSubmitButton().isPresent()).toBeTruthy();
+
+
+    loginPage.getPasswordInput().sendKeys("abc123a");
+    loginPage.getEmailInput().sendKeys("a@b.com");
+
+    loginPage.getLoginFormSubmitButton().click();
+
+    expect(loginPage.getLoginFailed().isPresent()).toBeTruthy();
+
+  });
+
   it('Can login', () => {
     loginPage.navigateTo();
     loginPage.getLoginButton().click();
@@ -42,6 +62,8 @@ describe('absaproj App', function () {
     loginPage.getEmailInput().sendKeys("a@b.com");
 
     loginPage.getLoginFormSubmitButton().click();
+    expect(loginPage.getLoginFailed().isPresent()).toBeFalsy();
+
   });
 
   it('Can Create Person', () => {
@@ -73,11 +95,21 @@ describe('absaproj App', function () {
     expect(editPage.getSurnameInput().isPresent()).toBeTruthy();
     expect(editPage.getCountryInput().isPresent()).toBeTruthy();
     expect(editPage.getSubmitButton().isPresent()).toBeTruthy();
-
+    editPage.getNameInput().clear();
+    editPage.getSurnameInput().clear();
     editPage.getNameInput().sendKeys(makeid());
     editPage.getSurnameInput().sendKeys(makeid());
     editPage.selectCountry();
     editPage.getSubmitButton().click();
+  });
+
+  it('Can Logout', () => {
+    page.waiTforRouteToLoad("people");
+
+    page.getLogOutButton().click();
+    page.waiTforRouteToLoad("login");
+
+    expect(page.getLoginButton().isPresent()).toBeTruthy();
   });
 
   function makeid() {

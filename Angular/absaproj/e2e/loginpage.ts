@@ -17,4 +17,8 @@ export class LoginPage extends AbsaprojPage {
     getLoginFormSubmitButton() {
         return element(by.css('app-root .login-submit'));
     }
+
+    getLoginFailed() {
+        return element(by.css('app-root .login-failed'));
+    }
 }

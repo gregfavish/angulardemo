@@ -19,10 +19,10 @@ export class ViewPage extends AbsaprojPage {
     }
 
     getEntityTableRow() {
-        return element(by.css('app-root table.personlist .personlistbody tr'));
+        return element.all(by.css('app-root table.personlist .personlistbody tr')).first();
     }
 
      getEntityTableRowEdit() {
-        return element(by.css('app-root table.personlist .personlistbody tr a'));
+        return element.all(by.css('app-root table.personlist .personlistbody tr a')).first();
     }
 }
